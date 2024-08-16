@@ -35,11 +35,11 @@
         <div class="table-header-title">科琳包覆门板厂报价表</div>
         <div class="table-header-user">
           <div class="table-header-user-item table-header-user-name">
-            <label>姓名：</label>
+            <label>客户姓名：</label>
             <el-input v-model="orderForm.name" />
           </div>
           <div class="table-header-user-item table-header-user-address">
-            <label>地址：</label>
+            <label>安装地址：</label>
             <el-input v-model="orderForm.address" />
           </div>
           <div class="table-header-user-item table-header-user-data">
@@ -349,7 +349,7 @@ export default {
 .table-header{
   border: 1px solid #000;
   border-bottom: none;
-  padding: 12px 0;
+  padding: 12px;
   .table-header-title{
     font-size: 36px;
     font-weight: 500;
@@ -357,7 +357,6 @@ export default {
   }
   .table-header-user{
     display: flex;
-    justify-content: end;
     margin-top: 10px;
     .table-header-user-item{
       display: flex;
@@ -371,6 +370,9 @@ export default {
         font-size: 16px;
         font-weight: 500;
       }
+    }
+    .table-header-user-data{
+      margin-left: auto;
     }
   }
 }
