@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF" -8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   function minSticks(lengths, w) {
+      //     // 计算所有棍子需要的总长度
+      //     let totalLength = lengths.reduce((sum, length) => sum + length, 0);
+
+      //     // 初始化DP数组，dp[i]表示制作长度为i的棍子所需的最少原材料数量
+      //     // 初始化为一个很大的数（比任何可能的答案都大），除了dp[0]为0（不需要任何材料制作长度为0的棍子）
+      //     const dp = Array(totalLength + 1).fill(Infinity);
+      //     dp[0] = 0;
+
+      //     // 遍历所有可能的棍子总长度（从1到totalLength）
+      //     for (let i = 1; i <= totalLength; i++) {
+      //       // 遍历所有可能的切割长度（从原材料长度w到当前长度i，但不超过w）
+      //       for (let j = 1; j <= Math.min(w, i); j++) {
+      //         // 如果当前长度i可以减去一个长度为j的棍子，并且dp[i-j]不是初始的Infinity
+      //         if (i >= j && dp[i - j] !== Infinity) {
+      //           // 更新dp[i]为dp[i-j]+1和当前dp[i]中的较小值
+      //           // dp[i-j]+1表示使用一根新的原材料来制作长度为j的棍子
+      //           dp[i] = Math.min(dp[i], dp[i - j] + 1);
+      //         }
+      //       }
+      //     }
+
+      //     // dp[totalLength]现在包含了制作所有棍子所需的最少原材料数量
+      //     return dp[totalLength];
+      //   }
+
+      //   // 示例用法
+      //   let w = 2440; // 棍子的长度
+      //   let sizes = [
+      //     364, 364, 364, 364, 364, 364, 364, 364, 1330, 1330, 1330, 1330, 1330,
+      //     1330, 1330, 1330, 362, 362, 362, 362, 362, 362, 362, 362, 920, 920, 920,
+      //     920, 920, 920, 920, 920, 371, 371, 371, 371, 920, 920, 920, 920, 371,
+      //     371, 371, 371, 1693, 1693, 1693, 1693,
+      //   ]; // 需要切割的棍子尺寸
+
+      //   console.log(minSticks(sizes, w)); // 输出所需的最少棍子数量
+    </script>
+    <script>
+      function minSheets(sizes, w, h) {
+        // sizes 是一个包含 [width, height] 数组的列表
+        // w 和 h 是原材料的宽和高
+
+        // 定义一个辅助函数来计算给定板材列表是否可以从一个原材料上裁切出来
+        function canCut(sheetSizes, w, h) {
+          let area = w * h;
+          for (let [width, height] of sheetSizes) {
+            if (width > w || height > h) return false; // 板材尺寸超过原材料尺寸
+            area -= width * height; // 减去已裁切的板材面积
+          }
+          return area >= 0; // 确保所有板材都能被裁切且不超过原材料面积
+        }
+
+        // DP 方法在这里变得复杂，因为我们需要考虑二维裁切
+        // 但为了简化，我们可以尝试一种贪婪的方法结合DP（虽然这不是真正的DP）
+
+        // 初始化：假设每个板材都需要一整张原材料
+        let totalSheets = sizes.length;
+
+        // 尝试组合板材以减少原材料数量（这里只是一个简化的思路，实际实现可能很复杂）
+        // 注意：下面的代码没有真正实现二维裁切优化，只是示意
+        // 真正的优化可能需要复杂的回溯、模拟或专门的二维裁切算法
+
+        // 假设我们有一些启发式方法来尝试组合板材（这里省略了具体实现）
+        // ...
+
+        // 由于二维裁切的复杂性，这里我们直接返回初步估计的总原材料数量
+        // 在实际应用中，你可能需要实现一个更复杂的算法来优化这个值
+        return totalSheets;
+
+        // 注意：上面的实现没有真正解决问题，因为它没有优化裁切
+
+        // 一个更实际的做法是使用回溯法或启发式搜索来尝试不同的裁切组合
+        // 但这通常计算量大且实现复杂
+
+        // 另一种方法是使用专门的二维裁切软件或库，这些通常基于复杂的算法和优化技术
+      }
+
+      // 示例
+      const sizes = [
+        [164, 1130],
+        [164, 1130],
+        [164, 1130],
+        [164, 1130],
+        [162, 720],
+        [162, 720],
+        [162, 720],
+        [162, 720],
+        [171, 720],
+        [171, 720],
+        [171, 1493],
+        [171, 1493],
+      ]; // 需要裁切的板材尺寸列表
+      const w = 2440; // 原材料的宽
+      const h = 1220; // 原材料的高
+      console.log(minSheets(sizes, w, h)); // 注意：这里的输出将不会是最优解，因为没有实现优化算法
+    </script>
+  </body>
+</html>
