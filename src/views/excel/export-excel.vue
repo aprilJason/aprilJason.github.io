@@ -35,7 +35,7 @@
         <div class="table-header-title">科琳包覆门板厂报价表</div>
         <div class="table-header-user">
           <div class="table-header-user-item table-header-user-name">
-            <label>客户姓名：</label>
+            <label>客户：</label>
             <el-input v-model="orderForm.name" />
           </div>
           <div class="table-header-user-item table-header-user-address">
@@ -379,6 +379,12 @@ export default {
 
 .el-table {
   border: 1px solid #000000;
+}
+
+.el-table .cell{
+  color: #000!important;
+  font-size: 16px!important;
+  font-weight: 500!important;
 }
 
 .el-table thead.is-group th {
